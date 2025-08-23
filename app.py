@@ -5,6 +5,14 @@ import joblib
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import re, html, unicodedata
+from tensorflow.keras.preprocessing.text import tokenizer_from_json
+import json
+
+
+# Load tokenizer properly
+with open("tokenizer.json") as f:
+    data = f.read()   # read raw string
+tok = tokenizer_from_json(data)
 
 # ========================
 # 1. Load Artifacts
@@ -67,3 +75,4 @@ if file:
         st.write(df.head())
         st.download_button("Download Predictions", df.to_csv(index=False).encode("utf-8"),
                            "predictions.csv", "text/csv")
+
