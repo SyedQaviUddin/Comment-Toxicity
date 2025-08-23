@@ -31,6 +31,52 @@ def load_artifacts():
 
 model, tok, meta = load_artifacts()
 
+
+
+
+
+
+def predict_text(text):
+    # Convert text to sequence
+    seq = tok.texts_to_sequences([text])
+
+    # Get maxlen from meta.json safely
+    maxlen = meta.get("max_len") or meta.get("maxlen")
+    if not maxlen:
+        raise ValueError("⚠️ 'max_len' or 'maxlen' not found in meta.json")
+
+    # Pad the sequence
+    seq = pad_sequences(seq, maxlen=maxlen, padding="post")
+
+    # Predict probability
+    prob = model.predict(seq)[0][0]
+
+    # Threshold at 0.5 (you can tune this)
+    pred = int(prob >= 0.5)
+
+    return float(prob), pred
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # ========================
 # 2. Text Cleaning
 # ========================
@@ -80,6 +126,7 @@ if file:
         st.write(df.head())
         st.download_button("Download Predictions", df.to_csv(index=False).encode("utf-8"),
                            "predictions.csv", "text/csv")
+
 
 
 
