@@ -102,3 +102,11 @@ For detailed setup, see Deployment Guide
 ## 🏁 Conclusion
 
 This project demonstrates how Deep Learning + NLP + Streamlit can create a practical solution for comment toxicity detection, useful for real-world online platforms.
+
+
+### Model File
+Download trained model from Google Drive:
+[model_bilstm.keras](https://drive.google.com/file/d/1cM0LTLDqcIEd3RQbP8kZspQBl11lCbLs/view?usp=sharing)
+
+
+
