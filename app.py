@@ -13,7 +13,7 @@ import re, html, unicodedata
 def load_artifacts():
    import gdown, os
 if not os.path.exists("model_bilstm.keras"):
-    url = ""
+    url = "https://drive.google.com/file/d/1cM0LTLDqcIEd3RQbP8kZspQBl11lCbLs/view?usp=sharing"
     gdown.download(url, "model_bilstm.keras", quiet=False)
 
     tok = joblib.load("tokenizer.joblib")
@@ -71,4 +71,5 @@ if file:
         st.write(df.head())
         st.download_button("Download Predictions", df.to_csv(index=False).encode("utf-8"),
                            "predictions.csv", "text/csv")
+
 
