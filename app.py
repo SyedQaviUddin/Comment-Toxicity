@@ -46,7 +46,9 @@ def predict_text(text):
         raise ValueError("⚠️ 'max_len' or 'maxlen' not found in meta.json")
 
     # Pad the sequence
-    seq = pad_sequences(seq, maxlen=maxlen, padding="post")
+
+seq = pad_sequences(seq, maxlen=maxlen, padding="post")
+
 
     # Predict probability
     prob = model.predict(seq)[0][0]
@@ -123,6 +125,7 @@ if file:
         st.write(df.head())
         st.download_button("Download Predictions", df.to_csv(index=False).encode("utf-8"),
                            "predictions.csv", "text/csv")
+
 
 
 
