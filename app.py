@@ -11,7 +11,7 @@ import re, html, unicodedata
 # ========================
 @st.cache_resource
 def load_artifacts():
-    model = load_model("model_bilstm.keras") 
+    model = load_model("model_bilstm.keras")
     tok = joblib.load("tokenizer.joblib")
     meta = joblib.load("meta.joblib")
     return model, tok, meta
@@ -67,7 +67,3 @@ if file:
         st.write(df.head())
         st.download_button("Download Predictions", df.to_csv(index=False).encode("utf-8"),
                            "predictions.csv", "text/csv")
-
-
-
-
